@@ -1,0 +1,40 @@
+/*index.html*/
+<!DOCTYPE html>
+<html>
+    <title>contact form</title>
+</head>
+<body>
+<h2>Contact Form</h2>
+<form action="submit.php" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" name="name" required><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" required><br><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="3" required></textarea><br><br>
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
+
+/* submit.php*/
+<!DOCTYPE html>
+<html>
+    <title>Document</title>
+</head>
+<body>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
+
+    echo "<h3>Name:$name<br><br>Email: $email<br><br>Message: $message</h3>";
+}
+?>
+</body>
+</html>
+
+
