@@ -1,0 +1,30 @@
+<html>
+<body>
+<form action="" method="post">
+    <label>Enter a word to search </label>
+    <input type="text" name="word"/>
+    <input type="submit" value="search" name="submit"/>
+</form>
+</body>
+<?php
+$dict = array(
+    "calculator"=>"An electronic machine  used for calculation",
+    "mango"=>"King of fruits",
+    "tesla"=>"Leading electric car company",
+    "banglore"=>"capital of karnataka",
+    "guitar" => " musical instrument ",
+    "chrome"=>"web browser by google",
+    "fish" => "lives in water", 
+    "bulldog"=>"a british breed of dog",
+    "elephant" => "are the largest living land animals ",
+);
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    $word=strtolower($_POST['word']);
+    if(array_key_exists($word,$dict)){
+        echo "Meaning: $word is $dict[$word]";
+    }
+    else echo "Word does not exist";
+}    
+
+?> 
+</html>
