@@ -67,13 +67,8 @@ echo"<strong>MOBILE: </strong>".$_POST['mobile']."<br><br>";
 echo"<strong>CITY: </strong>".$_POST['city']."<br><br>";
 echo"<strong>STATE: </strong>".$_POST['state']."<br><br>";
 echo"<strong>GENDER: </strong>".$_POST['gender']."<br><br>";
-echo"<strong>HOBBIES: </strong>";
-if(isset($_POST['hobbies'])){
-echo implode(' ',$_POST['hobbies'])."<br><br>";
-}else{
-echo "NO HOBBIES SELECTED <br>";
-}
-echo"<strong>BLOOD GROUP:</strong>:</strong>".$_POST['bg']."<br>";
+echo"<strong>HOBBIES:    </strong>". implode(", ", $_POST["hobbies"]) ."<br><br>";
+echo "<strong>BLOOD GROUP:</strong>" . $_POST["bg"] . "<br><br>";
 }
 ?>
 </body>
