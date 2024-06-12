@@ -1,0 +1,82 @@
+<html>
+<body>
+<h2>Student Registration Form</h2>
+    <form action="proces.php" method="post">
+        <label for="fname">First Name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        
+        <label for="lname">Last Name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address"></textarea><br>
+        
+        <label for="email">E-Mail:</label><br>
+        <input type="text" id="email" name="email"><br>
+        
+        <label for="mobile">Mobile:</label><br>
+        <input type="text" id="mobile" name="mobile"><br>
+        
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city"><br>
+        
+        <label for="state">State:</label><br>
+        <input type="text" id="state" name="state"><br>
+        
+        <label for="gender">Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        
+        <label for="hobbies">Hobbies:</label><br>
+        <input type="checkbox" id="hobby1" name="hobbies[]" value="reading">
+        <label for="hobby1">Reading</label><br>
+        <input type="checkbox" id="hobby2" name="hobbies[]" value="sports">
+        <label for="hobby2">Sports</label><br>
+        <input type="checkbox" id="hobby3" name="hobbies[]" value="music">
+        <label for="hobby3">Music</label><br>
+        
+        <label for="bg">Blood Group:</label><br>
+        <select id="bg" name="bg">
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+/*proces.php*/
+<html>
+<body>
+<h2>Student Data</h2>
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+echo"<strong>FIRST NAME: </strong>".$_POST["fname"]."<br><br>";
+echo"<strong>LAST NAME: </strong>".$_POST['lname']."<br><br>";
+echo"<strong>ADDRESS: </strong>".$_POST['address']."<br><br>";
+echo"<strong>E-MAIL: </strong>".$_POST['email']."<br><br>";
+echo"<strong>MOBILE: </strong>".$_POST['mobile']."<br><br>";
+echo"<strong>CITY: </strong>".$_POST['city']."<br><br>";
+echo"<strong>STATE: </strong>".$_POST['state']."<br><br>";
+echo"<strong>GENDER: </strong>".$_POST['gender']."<br><br>";
+echo"<strong>HOBBIES: </strong>";
+if(isset($_POST['hobbies'])){
+echo implode(' ',$_POST['hobbies'])."<br><br>";
+}else{
+echo "NO HOBBIES SELECTED <br>";
+}
+echo"<strong>BLOOD GROUP:</strong>:</strong>".$_POST['bg']."<br>";
+}
+?>
+</body>
+</html>
+
+
