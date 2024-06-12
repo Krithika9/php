@@ -1,0 +1,50 @@
+<html>
+<body>
+    <h2>Word Frequency Analyzer</h2>
+<form action="" method="post">Enter a string: <br>
+    <input type="text" name="input" required/>
+    <input type="submit" name="analyze" value="Analyze" ><br><br>
+    <input type="submit" name="asort" value="Sort Ascending"><br><br>
+    <input type="submit" name="dsort" value="Sort Descending">
+</form>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    function analyzeString($words){
+    $word_counts = array_count_values($words);
+    asort($words);
+    $max_count = max($word_counts);
+    $min_count = min($word_counts);
+    $most_used_words = array_keys($word_counts, $max_count);
+    $least_used_words = array_keys($word_counts, $min_count);
+
+    echo "<h3>Word Frequencies:</h3>";
+    foreach ($word_counts as $word => $count) {
+    echo "<p>$word: $count times<br></p>";
+    }
+    echo "<h4>The most used word is: ";
+    foreach ($most_used_words as $word) { 
+    echo "$word ";
+    }
+    echo "used ($max_count times)</h4>";
+
+    echo "<h4>The least used word is: ";
+    foreach ($least_used_words as $word) {
+    echo "$word ";
+    }
+    echo "used ($min_count times)</h4>";
+    }
+    $text = strtolower($_POST['input']);
+    $words = explode(" ", $text);
+
+if(isset($_POST['asort'])||isset($_POST['analyze'])){
+    asort($words);
+    analyzeString($words);
+}
+if(isset($_POST['dsort'])){
+    arsort($words);
+    analyzeString($words);
+}
+}
+?>
+</body>
+</html
